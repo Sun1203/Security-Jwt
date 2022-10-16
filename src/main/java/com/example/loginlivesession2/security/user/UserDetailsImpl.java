@@ -1,6 +1,6 @@
 package com.example.loginlivesession2.security.user;
 
-import com.example.loginlivesession2.account.entity.Account;
+import com.example.loginlivesession2.account.entity.Member;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -8,14 +8,14 @@ import java.util.Collection;
 
 public class UserDetailsImpl implements UserDetails {
 
-    private Account account;
+    private Member member;
 
-    public Account getAccount() {
-        return this.account;
+    public Member getMember() {
+        return this.member;
     }
 
-    public void setAccount(Account account) {
-            this.account = account;
+    public void setMember(Member member) {
+            this.member = member;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.example.loginlivesession2.account.entity;
 
-import com.example.loginlivesession2.account.dto.AccountReqDto;
+import com.example.loginlivesession2.account.dto.request.MemberReqDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,22 +13,20 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Entity
 @NoArgsConstructor
-public class Account {
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long memberId;
     @NotBlank
-    private String email;
+    private String nickname;
     @NotBlank
-    private String password;
-    @NotBlank
-    private String phoneNumber;
+    private String pw;
 
-    public Account(AccountReqDto accountReqDto) {
-        this.email = accountReqDto.getEmail();
-        this.password = accountReqDto.getPassword();
-        this.phoneNumber = accountReqDto.getPhoneNumber();
+
+    public Member(MemberReqDto memberReqDto) {
+        this.nickname = memberReqDto.getNickname();
+        this.pw = memberReqDto.getPw();
     }
 
 }

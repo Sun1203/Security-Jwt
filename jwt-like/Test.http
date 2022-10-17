@@ -1,0 +1,23 @@
+GET http://localhost:8080/api/issue/token
+Accept: application/json
+Refresh_Token: ㅁㄴㅇㄹㄴㅁㅇㄹ
+
+###
+POST http://localhost:8080/member/login
+Content-Type: application/json
+
+{
+  "nickname": "woasdf1",
+  "password": "bi1sss23"
+}
+
+###
+POST http://localhost:8080/member/signup
+Content-Type: application/json
+
+{
+  "nickname": "woasdf1",
+  "password": "bi1sss23",
+  "passwordConfirm": "bi1sss23"
+}
+###

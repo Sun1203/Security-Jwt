@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6ca54698-2cec-48b5-9d6b-95f9a668d8c2" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/base/Test.http" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/main/java/com/example/loginlivesession2/LoginLiveSession2Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/main/java/com/example/loginlivesession2/account/controller/AccountController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/main/java/com/example/loginlivesession2/account/dto/AccountReqDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/main/java/com/example/loginlivesession2/account/dto/LoginReqDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/main/java/com/example/loginlivesession2/account/entity/Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/main/java/com/example/loginlivesession2/account/entity/RefreshToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/main/java/com/example/loginlivesession2/account/repository/AccountRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/main/java/com/example/loginlivesession2/account/repository/RefreshTokenRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/main/java/com/example/loginlivesession2/account/service/AccountService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/main/java/com/example/loginlivesession2/global/dto/GlobalResDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/main/java/com/example/loginlivesession2/jwt/dto/TokenDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/main/java/com/example/loginlivesession2/jwt/filter/JwtAuthFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/main/java/com/example/loginlivesession2/jwt/util/JwtUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/main/java/com/example/loginlivesession2/security/WebSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/main/java/com/example/loginlivesession2/security/user/UserDetailsImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/main/java/com/example/loginlivesession2/security/user/UserDetailsServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/src/test/java/com/example/loginlivesession2/LoginLiveSession2ApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="GUGU" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2G7NEE2pwTLQ6RNTKu7e0pJbnJE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/rbqja/hanhea99/Security-Jwt",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="6ca54698-2cec-48b5-9d6b-95f9a668d8c2" name="변경" comment="" />
+      <created>1665735554251</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1665735554251</updated>
+      <workItem from="1665735558334" duration="16000" />
+      <workItem from="1665745638271" duration="434000" />
+      <workItem from="1665795284939" duration="209000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

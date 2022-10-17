@@ -47,4 +47,8 @@ public class Post extends Timestamped {
         this.title = postReqDto.getTitle();
         this.content = postReqDto.getContent();
     }
+
+    public void setPostlike(int postlike) {
+        this.postlike += postlike;
+    }
 }

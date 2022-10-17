@@ -30,9 +30,13 @@ public class PostLikeService {
 
         if (postLIke != null) {
             postLikeRepository.delete(postLIke);
+            post.setPostlike(-1);
+            postRepository.save(post);
             return GlobalResDto.success(new PostLikeResDto("좋아요취소"));
         }
         postLikeRepository.save(new PostLIke(userDetails.getAccount(), post));
+        post.setPostlike(1);
+        postRepository.save(post);
         return GlobalResDto.success(new PostLikeResDto("좋아요"));
     }
 

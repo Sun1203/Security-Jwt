@@ -1,6 +1,6 @@
 package com.example.loginlivesession2.jwt.filter;
 
-import com.example.loginlivesession2.global.dto.GlobalResDto;
+import com.example.loginlivesession2.dto.globalDto.GlobalResDto;
 import com.example.loginlivesession2.jwt.util.JwtUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -28,25 +28,25 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         String accessToken = jwtUtil.getHeaderToken(request, "Access");
         String refreshToken = jwtUtil.getHeaderToken(request, "Refresh");
 
-        if(accessToken != null) {
-            if(!jwtUtil.tokenValidation(accessToken)){
-                jwtExceptionHandler(response, "AccessToken Expired", HttpStatus.BAD_REQUEST);
+        if (accessToken != null) {
+            if (!jwtUtil.tokenValidation(accessToken)) {
+                jwtExceptionHandler(response, "토큰이 만료되었습니다", HttpStatus.BAD_REQUEST);
                 return;
             }
-            setAuthentication(jwtUtil.getEmailFromToken(accessToken));
-        }else if(refreshToken != null) {
-            if(!jwtUtil.refreshTokenValidation(refreshToken)){
-                jwtExceptionHandler(response, "RefreshToken Expired", HttpStatus.BAD_REQUEST);
+            setAuthentication(jwtUtil.getNicknameFromToken(accessToken));
+        } else if (refreshToken != null) {
+            if (!jwtUtil.refreshTokenValidation(refreshToken)) {
+                jwtExceptionHandler(response, "리프레쉬 토큰이 만료되었습니다.", HttpStatus.BAD_REQUEST);
                 return;
             }
-            setAuthentication(jwtUtil.getEmailFromToken(refreshToken));
+            setAuthentication(jwtUtil.getNicknameFromToken(refreshToken));
         }
 
-        filterChain.doFilter(request,response);
+        filterChain.doFilter(request, response);
     }
 
-    public void setAuthentication(String email) {
-        Authentication authentication = jwtUtil.createAuthentication(email);
+    public void setAuthentication(String nickname) {
+        Authentication authentication = jwtUtil.createAuthentication(nickname);
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 
@@ -54,7 +54,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         response.setStatus(status.value());
         response.setContentType("application/json");
         try {
-            String json = new ObjectMapper().writeValueAsString(new GlobalResDto(msg, status.value()));
+            String json = new ObjectMapper().writeValueAsString(GlobalResDto.fail("BAD_REQUEST", msg));
             response.getWriter().write(json);
         } catch (Exception e) {
             log.error(e.getMessage());

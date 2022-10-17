@@ -37,11 +37,20 @@ public class WebSecurityConfig {
         http.cors();
         http.csrf().disable();
 
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        //세션사용안함
+        http
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-        http.authorizeRequests().antMatchers("/api/account/**").permitAll()
+        //토큰없이 요청가능한 url /member/**, /show/** 그외에는 권환학인 필수
+        http
+                .authorizeRequests()
+                .antMatchers("/member/**").permitAll()
+                .antMatchers("/show/**").permitAll()
                 .anyRequest().authenticated()
-                .and().addFilterBefore(new JwtAuthFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);
+
+                .and()
+                .addFilterBefore(new JwtAuthFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
 

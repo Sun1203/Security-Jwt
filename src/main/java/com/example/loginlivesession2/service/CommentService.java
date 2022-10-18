@@ -22,6 +22,7 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final PostRepository postRepository;
 
+    @Transactional
     public GlobalResDto<?> generateComment(UserDetailsImpl userDetails, Long postid, CommentReqDto commentReqDto) {
         Post post = isPresentPost(postid);
         if (post == null) {
@@ -51,6 +52,7 @@ public class CommentService {
         return GlobalResDto.success(commentResDto);
     }
 
+    @Transactional
     public GlobalResDto<?> delComment(UserDetailsImpl userDetails, Long postid, Long commentid) {
         Post post = isPresentPost(postid);
         if (post == null) {

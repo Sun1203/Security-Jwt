@@ -9,6 +9,7 @@ import com.example.loginlivesession2.dto.response.PostAllResDto;
 import com.example.loginlivesession2.dto.response.PostResDto;
 import com.example.loginlivesession2.dto.response.delDto;
 import com.example.loginlivesession2.repository.CommentRepository;
+import com.example.loginlivesession2.repository.PostLikeRepository;
 import com.example.loginlivesession2.repository.PostRepository;
 import com.example.loginlivesession2.security.user.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,7 @@ public class PostService {
 
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;
+    private final PostLikeRepository postLikeRepository;
 
     @Transactional
     public GlobalResDto<?> generatePost(UserDetailsImpl userDetails, PostReqDto postReqDto) {
@@ -82,6 +84,7 @@ public class PostService {
         }
         List<Comment> comments = isPresentComment(post);
         commentRepository.deleteAll(comments);
+        postLikeRepository.deleteBypost(post);
         postRepository.delete(post);
         //댓글삭제도 같이하자
         return GlobalResDto.success(new delDto("삭제 완료"));

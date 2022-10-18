@@ -13,7 +13,7 @@ public class PostAllResDto {
     private LocalDateTime createAt;
     private String nickname;
     private Long postid;
-    private int like;
+    private Long like;
     private String title;
     private String content;
 

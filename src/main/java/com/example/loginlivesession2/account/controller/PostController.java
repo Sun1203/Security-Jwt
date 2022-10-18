@@ -8,17 +8,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping(value = "/api")
 public class PostController {
 
     private final PostService postService;
 
-    @PostMapping(value = "/api/post")
+    @PostMapping(value = "/post")
     public ResponseDto<?> createPost(@RequestBody @Valid PostRequestDto requestDto,
                                      @AuthenticationPrincipal UserDetailsImpl userDetails) {
         Long memberId = userDetails.getMember().getMemberId();
@@ -26,7 +25,7 @@ public class PostController {
 
     }
 
-    @PutMapping(value = "/api/post/{id}")
+    @PutMapping(value = "/post/{id}")
     public ResponseDto<?> updatePost(@RequestBody PostRequestDto requestDto,
                                      @AuthenticationPrincipal UserDetailsImpl userDetails,
                                      @PathVariable Long id
@@ -35,19 +34,19 @@ public class PostController {
         return postService.updatePost(requestDto, memberId, id);
     }
 
-    @DeleteMapping(value = "/api/post/{id}")
+    @DeleteMapping(value = "/post/{id}")
     public ResponseDto<?> deletePost(@PathVariable Long id,
                                      @AuthenticationPrincipal UserDetailsImpl userDetails) {
         Long memberId = userDetails.getMember().getMemberId();
         return postService.deleteOne(id, memberId);
     }
 
-    @GetMapping(value = "/api/show")
+    @GetMapping(value = "/show")
     public ResponseDto<?> getPost() {
         return postService.getPost();
     }
 
-    @GetMapping(value = "/api/show/{id}")
+    @GetMapping(value = "/show/{id}")
     public ResponseDto<?> getOnePost(@PathVariable Long id) {
         return postService.getOnePost(id);
     }

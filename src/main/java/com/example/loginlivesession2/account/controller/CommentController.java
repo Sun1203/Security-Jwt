@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping(value = "/api/post/{id}")
 public class CommentController {
 
     private final CommentService commentService;
 
-    @PostMapping(value = "/api/post/{id}/comment")
+    @PostMapping(value = "/comment")
     public ResponseDto<?> createComment(@PathVariable Long id,
                                         @AuthenticationPrincipal UserDetailsImpl userDetails,
                                         @RequestBody CommentRequestDto commentRequestDto) {
@@ -22,7 +23,7 @@ public class CommentController {
         return commentService.createComment(commentRequestDto, id, memberId);
     }
 
-    @PutMapping(value = "/api/post/{id}/{commentId}")
+    @PutMapping(value = "/{commentId}")
     public ResponseDto<?> updateComment(@PathVariable Long id,
                                         @PathVariable Long commentId,
                                         @RequestBody CommentRequestDto commentRequestDto,
@@ -32,7 +33,7 @@ public class CommentController {
         return commentService.updateComment(id, commentId, memberId, commentRequestDto);
     }
 
-    @DeleteMapping(value = "/api/post/{id}/{commentId}")
+    @DeleteMapping(value = "/{commentId}")
     public ResponseDto<?> deleteComment(@PathVariable Long id,
                                         @PathVariable Long commentId,
                                         @AuthenticationPrincipal UserDetailsImpl userDetails) {

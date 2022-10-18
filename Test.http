@@ -42,10 +42,10 @@ Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjA1Nzg0M
   "contents": "contents1"
 }
 
-###
+### ㄱㅔ시글 작성
 POST http://localhost:8080/api/post
 Content-Type: application/json
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjA1NjU3NSwiaWF0IjoxNjY2MDU0Nzc1fQ.4LpbDJijaWWtDsAGZbHrtwRJQlD2jzRDlt_qMbee698
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjA2MTM4NCwiaWF0IjoxNjY2MDU5NTg0fQ.gEYepLHl3erNZ_Y153Haula_8pI2C3Bb9rKbTgNpgsY
 
 
 {

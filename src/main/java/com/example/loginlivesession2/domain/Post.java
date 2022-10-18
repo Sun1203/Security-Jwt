@@ -24,7 +24,7 @@ public class Post extends Timestamped {
     @Column(nullable = false)
     private String nickname;
 
-    private Long postlike;
+    private long postlike;
 
     @Column(nullable = false)
     private String title;

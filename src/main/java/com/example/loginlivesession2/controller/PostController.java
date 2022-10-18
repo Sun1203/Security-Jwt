@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -16,7 +18,7 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("/post")
-    public GlobalResDto<?> generatePost(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestBody PostReqDto postReqDto) {
+    public GlobalResDto<?> generatePost(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestBody @Valid PostReqDto postReqDto) {
         Long memberid = userDetails.getAccount().getMemberid();
         return postService.generatePost(memberid, postReqDto);
     }

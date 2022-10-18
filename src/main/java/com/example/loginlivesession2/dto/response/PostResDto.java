@@ -14,7 +14,7 @@ public class PostResDto {
     private LocalDateTime createAt;
     private String nickname;
     private long postid;
-    private Long like;
+    private int like;
     private String title;
     private String content;
     private List<CommentResDto> commentResDtoList;

@@ -7,7 +7,7 @@ POST http://localhost:8080/member/signup
 Content-Type: application/json
 
 {
-  "nickname": "kong1",
+  "nickname": "keh5164",
   "pw": "5509kong",
   "pwck": "5509kong"
 }
@@ -17,13 +17,13 @@ POST http://localhost:8080/member/login
 Content-Type: application/json
 
 {
-  "nickname": "kong1",
+  "nickname": "keh5164",
   "pw": "5509kong"
 }
 
 ###포스팅
 POST http://localhost:8080/post
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrb25nMiIsImV4cCI6MTY2NjA2NjIzMSwiaWF0IjoxNjY2MDY0NDMxfQ.92LXjXcS-kCsnYqk01oKmPm9XwfmKa128D97UXxd_sA
+Access_token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZWg1MTY0IiwiZXhwIjoxNjY2MDk5MzA0LCJpYXQiOjE2NjYwOTc1MDR9.w8sLg6re2Z57yJD2AJ3VFy0n1b6-I4nqg10xuQKy6Ug
 Content-Type: application/json
 
 {
@@ -32,8 +32,8 @@ Content-Type: application/json
 }
 
 ###댓글작성
-POST http://localhost:8080/post/1/comment
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZWg1MTY0IiwiZXhwIjoxNjY2MDYwMDU5LCJpYXQiOjE2NjYwNTgyNTl9._lhGfJeTxTDi82n2f2LjeF-0tBCkGXyb2cazY8Ko_Cc
+POST http://localhost:8080/ver1/post/1/comment
+Access_token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZWg1MTY0IiwiZXhwIjoxNjY2MDYwMDU5LCJpYXQiOjE2NjYwNTgyNTl9._lhGfJeTxTDi82n2f2LjeF-0tBCkGXyb2cazY8Ko_Cc
 Content-Type: application/json
 
 {
@@ -41,30 +41,30 @@ Content-Type: application/json
 }
 
 ###좋아요/postid
-POST http://localhost:8080/like/1
+POST http://localhost:8080/ver1/like/1
 Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZWg1MTY0IiwiZXhwIjoxNjY2MDYwMDU5LCJpYXQiOjE2NjYwNTgyNTl9._lhGfJeTxTDi82n2f2LjeF-0tBCkGXyb2cazY8Ko_Cc
 Content-Type: application/json
 
 ###모든 포스팅 가져오기
-GET http://localhost:8080/show
+GET http://localhost:8080/ver1/show
 
 ###포스팅 하나 가져오기/postid
-GET http://localhost:8080/show/1
+GET http://localhost:8080/ver1/show/1
 
 ###내가쓴 게시물 다 가져오기
-GET http://localhost:8080/mypage/post
+GET http://localhost:8080/ver1/mypage/post
 Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZWg1MTY0IiwiZXhwIjoxNjY2MDYwMDU5LCJpYXQiOjE2NjYwNTgyNTl9._lhGfJeTxTDi82n2f2LjeF-0tBCkGXyb2cazY8Ko_Cc
 
 ###내가 쓴 댓글 다 가져오기
-GET http://localhost:8080/mypage/comment
+GET http://localhost:8080/ver1/mypage/comment
 Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZWg1MTY0IiwiZXhwIjoxNjY2MDYwMDU5LCJpYXQiOjE2NjYwNTgyNTl9._lhGfJeTxTDi82n2f2LjeF-0tBCkGXyb2cazY8Ko_Cc
 
 ###내가 좋아요한 게시물 다 가져오기
-GET http://localhost:8080/mypage/postlike
+GET http://localhost:8080/ver1/mypage/postlike
 Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZWg1MTY0IiwiZXhwIjoxNjY2MDYwMDU5LCJpYXQiOjE2NjYwNTgyNTl9._lhGfJeTxTDi82n2f2LjeF-0tBCkGXyb2cazY8Ko_Cc
 
 ###포스팅 수정/postid
-PUT http://localhost:8080/post/1
+PUT http://localhost:8080/ver1/post/1
 Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZWg1MTY0IiwiZXhwIjoxNjY2MDYwMDU5LCJpYXQiOjE2NjYwNTgyNTl9._lhGfJeTxTDi82n2f2LjeF-0tBCkGXyb2cazY8Ko_Cc
 Content-Type: application/json
 
@@ -74,7 +74,7 @@ Content-Type: application/json
 }
 
 ###댓글수정/postid/commentid
-PUT http://localhost:8080/post/1/1
+PUT http://localhost:8080/ver1/post/1/1
 Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZWg1MTY0IiwiZXhwIjoxNjY2MDYwMDU5LCJpYXQiOjE2NjYwNTgyNTl9._lhGfJeTxTDi82n2f2LjeF-0tBCkGXyb2cazY8Ko_Cc
 Content-Type: application/json
 
@@ -83,14 +83,14 @@ Content-Type: application/json
 }
 
 ###포스팅삭제/postid
-DELETE http://localhost:8080/post/1
+DELETE http://localhost:8080/ver1/post/1
 Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZWg1MTY0IiwiZXhwIjoxNjY2MDYwMDU5LCJpYXQiOjE2NjYwNTgyNTl9._lhGfJeTxTDi82n2f2LjeF-0tBCkGXyb2cazY8Ko_Cc
 
 ###댓글삭제/postid/commentid
-DELETE http://localhost:8080/post/1/1
+DELETE http://localhost:8080/ver1/post/1/1
 Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZWg1MTY0IiwiZXhwIjoxNjY2MDYwMDU5LCJpYXQiOjE2NjYwNTgyNTl9._lhGfJeTxTDi82n2f2LjeF-0tBCkGXyb2cazY8Ko_Cc
 
 ###좋아요취소/postid
-DELETE http://localhost:8080/like/1
+DELETE http://localhost:8080/ver1/like/1
 Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZWg1MTY0IiwiZXhwIjoxNjY2MDYwMDU5LCJpYXQiOjE2NjYwNTgyNTl9._lhGfJeTxTDi82n2f2LjeF-0tBCkGXyb2cazY8Ko_Cc
 

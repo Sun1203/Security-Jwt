@@ -1,14 +1,15 @@
 package com.hanhea.jwtlike.account.repository;
 
 import com.hanhea.jwtlike.account.entity.Account;
+import com.hanhea.jwtlike.account.entity.Posts;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface AccountRepository extends JpaRepository<Account, Long> {
-    Optional<Account> findByNickname(String nickname);
-
-    boolean existsByNickname(String nickname);
+public interface PostsRepository extends JpaRepository<Posts, Long> {
+    Optional<Posts> findByIdAndAccount(Long id, Account account);
+    List<Posts> findAll();
 }

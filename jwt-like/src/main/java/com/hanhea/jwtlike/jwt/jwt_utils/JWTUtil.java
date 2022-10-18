@@ -26,9 +26,9 @@ public class JWTUtil {
 
     private final RedisTemplate<String, String> redisTemplate;
 
-    private static final Long ACCESS_TIME = 3L*1000*60L; //3분
+    private static final Long ACCESS_TIME = 10*1000*60L; //3분
     public static final String ACCESS_TOKEN = "Access_Token";
-    private static final Long REFRESH_TIME = 7L*1000*60L; //7분
+    private static final Long REFRESH_TIME = 20*1000*60L; //7분
 
     @Value("${jwt.secret}")
     private String secretKey;
@@ -39,7 +39,7 @@ public class JWTUtil {
 
 
     @PostConstruct
-    public void init(){
+    public void init() {
         byte[] bytes = Base64.getDecoder().decode(secretKey);
         key = Keys.hmacShaKeyFor(bytes);
     }
@@ -98,7 +98,7 @@ public class JWTUtil {
     }
 
     //토큰에서 꺼내오기 기능
-    public String getNicknameFromToken(String token){
-        return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJwt(token).getBody().getSubject();
+    public String getNicknameFromToken(String token) {
+        return Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody().getSubject();
     }
 }

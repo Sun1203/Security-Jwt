@@ -1,6 +1,49 @@
-GET http://localhost:8080/api/issue/token
+###
+POST http://localhost:8080/addpost
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3b2FzZGYxIiwiZXhwIjoxNjY2MDUxNjUyLCJpYXQiOjE2NjYwNTEwNTJ9.n3dl8SkWQCSY_OY6OzAyOYJVWFtZmvVpdvt5Thn6PXU
+Content-Type: application/json
+
+{
+  "title": "hello2",
+  "content": "gini"
+}
+
+###
+PUT http://localhost:8080/post/1
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3b2FzZGYxIiwiZXhwIjoxNjY2MDUxNjUyLCJpYXQiOjE2NjYwNTEwNTJ9.n3dl8SkWQCSY_OY6OzAyOYJVWFtZmvVpdvt5Thn6PXU
+Content-Type: application/json
+
+{
+  "title": "수정본",
+  "content": "수정한내용"
+}
+
+###
+DELETE http://localhost:8080/post/1
+
 Accept: application/json
-Refresh_Token: ㅁㄴㅇㄹㄴㅁㅇㄹ
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3b2FzZGYxIiwiZXhwIjoxNjY2MDUxMDgzLCJpYXQiOjE2NjYwNTA0ODN9.NPcIBpUDgxhY6IAo6KfNtLpjSjKVK-cnR8eGcKNUNdU
+
+###
+GET http://localhost:8080/show/post
+
+###
+GET http://localhost:8080/show/1
+
+###
+GET http://localhost:8080/post/{postid}/comment
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3b2FzZGYxIiwiZXhwIjoxNjY2MDQyODQ0LCJpYXQiOjE2NjYwNDIyNDR9.rnT_Hr7r6csq6FXAFXF3dX6m7_Q5MCzW8gNlM61SZxU
+Content-Type: application/json
+
+###
+GET http://localhost:8080/show/post
+#Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3b2FzZGYxIiwiZXhwIjoxNjY2MDQyODQ0LCJpYXQiOjE2NjYwNDIyNDR9.rnT_Hr7r6csq6FXAFXF3dX6m7_Q5MCzW8gNlM61SZxU
+#Content-Type: application/json
+
+###
+GET http://localhost:8080/show/1
+#Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3b2FzZGYxIiwiZXhwIjoxNjY2MDQyODQ0LCJpYXQiOjE2NjYwNDIyNDR9.rnT_Hr7r6csq6FXAFXF3dX6m7_Q5MCzW8gNlM61SZxU
+#Content-Type: application/json
 
 ###
 POST http://localhost:8080/member/login
@@ -8,7 +51,7 @@ Content-Type: application/json
 
 {
   "nickname": "woasdf1",
-  "password": "bi1sss23"
+  "password": "baasdfasd1"
 }
 
 ###
@@ -17,7 +60,7 @@ Content-Type: application/json
 
 {
   "nickname": "woasdf1",
-  "password": "bi1sss23",
-  "passwordConfirm": "bi1sss23"
+  "password": "baasdfasd1",
+  "passwordConfirm": "baasdfasd1"
 }
 ###

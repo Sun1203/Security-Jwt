@@ -2,13 +2,11 @@ package com.hanhea.jwtlike.account.controller;
 
 import com.hanhea.jwtlike.account.dto.Request.AccountloginDto;
 import com.hanhea.jwtlike.account.dto.Request.AccountsignupDto;
-import com.hanhea.jwtlike.account.dto.Response.CommonResponseDto;
 import com.hanhea.jwtlike.account.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;

@@ -1,5 +1,6 @@
 package com.hanhea.jwtlike.account.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hanhea.jwtlike.account.dto.Request.AccountsignupDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +13,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name="members")
-public class Account {
+public class Account extends Timestamp{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="member_id")
@@ -22,6 +24,7 @@ public class Account {
     private String nickname;
 
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
 
     public Account(Account account){

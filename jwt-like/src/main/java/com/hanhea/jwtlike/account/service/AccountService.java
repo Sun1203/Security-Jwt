@@ -27,7 +27,7 @@ public class AccountService {
     public ResponseEntity signup(AccountsignupDto signupDto) {
 
         try {
-            if(accountRepository.findAccountByNickname(signupDto.getNickname()).isPresent())    throw new RuntimeException("아이디 중복");
+            if(accountRepository.findByNickname(signupDto.getNickname()).isPresent())    throw new RuntimeException("아이디 중복");
             //비번 일치하지 않으면
             if (!signupDto.Accountcheck()) {
                 return ResponseEntity
@@ -50,7 +50,7 @@ public class AccountService {
     @Transactional
     public ResponseEntity login(AccountloginDto accountloginDto, HttpServletResponse response){
         try {
-            Account account = accountRepository.findAccountByNickname(accountloginDto.getNickname()).orElseThrow(() -> new IllegalArgumentException("아이디가 없습니다."));
+            Account account = accountRepository.findByNickname(accountloginDto.getNickname()).orElseThrow(() -> new IllegalArgumentException("아이디가 없습니다."));
             if(!passwordEncoder.matches(accountloginDto.getPassword(), account.getPassword()))  throw new RuntimeException("패스워드가 틀립니다.");
             String token = jwtutil.createAllToken(account.getNickname());//ACTK나옴, RFTK redis 저장
             response.addHeader(JWTUtil.ACCESS_TOKEN, token);

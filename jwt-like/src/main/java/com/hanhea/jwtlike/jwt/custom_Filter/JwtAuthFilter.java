@@ -1,6 +1,5 @@
 package com.hanhea.jwtlike.jwt.custom_Filter;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hanhea.jwtlike.account.dto.Response.CommonResponseDto;
 import com.hanhea.jwtlike.jwt.jwt_utils.JWTUtil;
@@ -25,20 +24,22 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
+
         String accessToken = request.getHeader("Access_Token");
-
-        if (jwtUtil.tokenValidation(accessToken)) {//완전 정상, 만료기간이내
-            String nickname = jwtUtil.getNicknameFromToken(accessToken);//이름빼내기
-            if(jwtUtil.rftokenvalid(nickname)){//refresh기간이 아직 남아 있다면
-                accessToken = jwtUtil.createAllToken(nickname); //토큰 재생성및 저장
-            }
-        } else{//accessToken완전 이상
-
+        if(accessToken != null) {
+            if (jwtUtil.tokenValidation(accessToken)) {//완전 정상, 만료기간이내
+                String nickname = jwtUtil.getNicknameFromToken(accessToken);//이름빼내기
+                if (jwtUtil.rftokenvalid(nickname)) {//refresh기간이 아직 남아 있다면
+                    accessToken = jwtUtil.createAllToken(nickname); //토큰 재생성 및 저장
+                }
+                setAuthentication(nickname);
+            } else jwtExceptionHandler(response, "재로그인 하세요", HttpStatus.BAD_REQUEST);
         }
+        filterChain.doFilter(request,response);
     }
 
-    public void setAuthentication(String email) {
-        Authentication authentication = jwtUtil.createAuthentication(email);
+    public void setAuthentication(String nickname) {
+        Authentication authentication = jwtUtil.createAuthentication(nickname);
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 

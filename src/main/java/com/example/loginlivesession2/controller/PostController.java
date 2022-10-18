@@ -17,7 +17,8 @@ public class PostController {
 
     @PostMapping("/post")
     public GlobalResDto<?> generatePost(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestBody PostReqDto postReqDto) {
-        return postService.generatePost(userDetails, postReqDto);
+        Long memberid = userDetails.getAccount().getMemberid();
+        return postService.generatePost(memberid, postReqDto);
     }
 
     @PutMapping("/post/{postid}")

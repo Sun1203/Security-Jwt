@@ -3,7 +3,7 @@ Accept: application/json
 Refresh_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3b25iaW5AbWFpbC5jb20iLCJleHAiOjE2NjU2Nzk1OTcsImlhdCI6MTY2NTY2OTU5N30.VrAbI37jKCzlkDP8xGWVZq3aL8qwao9OZSFs-mMzz4s
 
 ###회원가입
-POST http://localhost:8080/ver1/member/signup
+POST http://localhost:8080/member/signup
 Content-Type: application/json
 
 {
@@ -13,7 +13,7 @@ Content-Type: application/json
 }
 
 ###로그인
-POST http://localhost:8080/ver1/member/login
+POST http://localhost:8080/member/login
 Content-Type: application/json
 
 {
@@ -22,8 +22,8 @@ Content-Type: application/json
 }
 
 ###포스팅
-POST http://localhost:8080/ver1/post
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZWg1MTY0IiwiZXhwIjoxNjY2MDYwMDU5LCJpYXQiOjE2NjYwNTgyNTl9._lhGfJeTxTDi82n2f2LjeF-0tBCkGXyb2cazY8Ko_Cc
+POST http://localhost:8080/post
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZWg1MTY0IiwiZXhwIjoxNjY2MDY0MDU4LCJpYXQiOjE2NjYwNjIyNTh9.7QPvc6khiBRCO2E_D9XjGg9TyQHsD5Nxv2xyaVd8V74
 Content-Type: application/json
 
 {

@@ -1,6 +1,7 @@
 package com.example.loginlivesession2.service;
 
 import com.example.loginlivesession2.domain.Comment;
+import com.example.loginlivesession2.domain.Member;
 import com.example.loginlivesession2.domain.Post;
 import com.example.loginlivesession2.dto.globalDto.GlobalResDto;
 import com.example.loginlivesession2.dto.request.PostReqDto;
@@ -9,6 +10,7 @@ import com.example.loginlivesession2.dto.response.PostAllResDto;
 import com.example.loginlivesession2.dto.response.PostResDto;
 import com.example.loginlivesession2.dto.response.delDto;
 import com.example.loginlivesession2.repository.CommentRepository;
+import com.example.loginlivesession2.repository.MemberRepository;
 import com.example.loginlivesession2.repository.PostLikeRepository;
 import com.example.loginlivesession2.repository.PostRepository;
 import com.example.loginlivesession2.security.user.UserDetailsImpl;
@@ -27,10 +29,15 @@ public class PostService {
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;
     private final PostLikeRepository postLikeRepository;
+    private final MemberRepository memberRepository;
 
     @Transactional
-    public GlobalResDto<?> generatePost(UserDetailsImpl userDetails, PostReqDto postReqDto) {
-        Post post = new Post(userDetails.getAccount(), postReqDto);
+    public GlobalResDto<?> generatePost(Long memberid, PostReqDto postReqDto) {
+        Member member = isPresentMember(memberid);
+        if(member==null){
+            return GlobalResDto.fail("MEMBER_NOT_FOUND","사용자가 존재하지 않습니다.");
+        }
+        Post post = new Post(member, postReqDto);
         postRepository.save(post);
         PostResDto postResDto = PostResDto.toPostResDto(post, null);
         return GlobalResDto.success(postResDto);
@@ -88,6 +95,11 @@ public class PostService {
         postRepository.delete(post);
         //댓글삭제도 같이하자
         return GlobalResDto.success(new delDto("삭제 완료"));
+    }
+
+    public Member isPresentMember(Long memberid){
+        Optional<Member> member = memberRepository.findById(memberid);
+        return member.orElse(null);
     }
 
     public Post isPresentPost(Long postid) {

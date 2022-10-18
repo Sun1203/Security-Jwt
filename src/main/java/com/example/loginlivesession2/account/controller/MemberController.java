@@ -22,19 +22,17 @@ public class MemberController {
     private final JwtUtil jwtUtil;
     private final MemberService memberService;
 
-    @PostMapping("/member/signup")
+    @PostMapping(value = "/member/signup")
     public ResponseDto<?> signup(@RequestBody @Valid MemberReqDto memberReqDto) {
         return memberService.signup(memberReqDto);
     }
 
-    @PostMapping("/member/login")
+    @PostMapping(value = "/member/login")
     public ResponseDto<?> login(@RequestBody @Valid MemberReqDto memberReqDto, HttpServletResponse response) throws Exception {
-        System.out.println(memberReqDto.getPw());
-        System.out.println(memberReqDto.getNickname());
         return memberService.login(memberReqDto, response);
     }
 
-    @GetMapping("/issue/token")
+    @GetMapping(value = "/issue/token")
     public GlobalResDto issuedToken(@AuthenticationPrincipal UserDetailsImpl userDetails, HttpServletResponse response){
         response.addHeader(JwtUtil.ACCESS_TOKEN, jwtUtil.createToken(userDetails.getMember().getNickname(), "Access"));
         return new GlobalResDto("Success IssuedToken", HttpStatus.OK.value());

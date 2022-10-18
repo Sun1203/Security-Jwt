@@ -24,6 +24,7 @@ public class Member {
     private String pw;
 
 
+
     public Member(MemberReqDto memberReqDto) {
         this.nickname = memberReqDto.getNickname();
         this.pw = memberReqDto.getPw();

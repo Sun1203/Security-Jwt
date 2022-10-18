@@ -7,6 +7,16 @@ POST http://localhost:8080/api/member/signup
 Content-Type: application/json
 
 {
+  "nickname": "jasun123",
+  "pw": "@Qlqjs134",
+  "pwck" : "@Qlqjs134"
+}
+
+###
+POST http://localhost:8080/api/member/signup
+Content-Type: application/json
+
+{
   "nickname": "jasun1234",
   "pw": "@Qlqjs134",
   "pwck" : "@Qlqjs134"
@@ -17,8 +27,87 @@ POST http://localhost:8080/api/member/login
 Content-Type: application/json
 
 {
-  "nickname": "jasun1234",
+  "nickname": "jasun123",
   "pw": "@Qlqjs134"
 }
 
 ###
+POST http://localhost:8080/api/post
+Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjA1Nzg0MSwiaWF0IjoxNjY2MDU2MDQxfQ.ssWBeNbbOdszwzGCEHKHieaLIkHpuCa-10bdHEZouE8
+
+
+{
+  "title" : "test1",
+  "contents": "contents1"
+}
+
+###
+POST http://localhost:8080/api/post
+Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjA1NjU3NSwiaWF0IjoxNjY2MDU0Nzc1fQ.4LpbDJijaWWtDsAGZbHrtwRJQlD2jzRDlt_qMbee698
+
+
+{
+  "title": "title",
+  "contents": "contents"
+}
+
+###
+PUT http://localhost:8080/api/post/1
+Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMzQiLCJleHAiOjE2NjU5Mjg0MDksImlhdCI6MTY2NTkyNjYwOX0.8qKoV2hZVOgxA66vfd243-2ckrnRzgxomJf7B6xgRV0
+
+
+{
+  "title": "수정",
+  "contents": "내용수정!"
+}
+
+###
+DELETE http://localhost:8080/api/post/2
+Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMzQiLCJleHAiOjE2NjU5MjY0ODUsImlhdCI6MTY2NTkyNDY4NX0.vjGFpSr-_HF7trmA6un90G8C4LvDuVsM4S3T-v5dbuc
+
+###
+GET http://localhost:8080/api/show
+Content-Type: application/json
+
+###
+GET http://localhost:8080/api/show/1
+Content-Type: application/json
+
+###
+POST http://localhost:8080/api/post/3/comment
+Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjA1Nzg0MSwiaWF0IjoxNjY2MDU2MDQxfQ.ssWBeNbbOdszwzGCEHKHieaLIkHpuCa-10bdHEZouE8
+
+{
+  "comment": "댓글!234"
+}
+
+###
+POST http://localhost:8080/api/like/3
+Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMzQiLCJleHAiOjE2NjYwMjM5ODcsImlhdCI6MTY2NjAyMjE4N30.xnMx9Tz7nLmzynfidlQ31lQtsoTjniXMGkDyZMRDGWs
+
+
+###
+DELETE http://localhost:8080/api/like/2
+Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMzQiLCJleHAiOjE2NjYwMjI4MTksImlhdCI6MTY2NjAyMTAxOX0.C7QE1418qOOjNVpqxM17ui0mTUXqB8ZvVPFJy0tecvE
+
+###
+GET http://localhost:8080/api/mypage/like
+Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMzQiLCJleHAiOjE2NjYwMjM5ODcsImlhdCI6MTY2NjAyMjE4N30.xnMx9Tz7nLmzynfidlQ31lQtsoTjniXMGkDyZMRDGWs
+
+###
+GET http://localhost:8080/api/mypage/post
+Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjA1NjU3NSwiaWF0IjoxNjY2MDU0Nzc1fQ.4LpbDJijaWWtDsAGZbHrtwRJQlD2jzRDlt_qMbee698
+
+###
+GET http://localhost:8080/api/mypage/comment
+Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjA1Nzg0MSwiaWF0IjoxNjY2MDU2MDQxfQ.ssWBeNbbOdszwzGCEHKHieaLIkHpuCa-10bdHEZouE8

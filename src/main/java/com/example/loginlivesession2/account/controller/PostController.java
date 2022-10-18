@@ -3,13 +3,14 @@ package com.example.loginlivesession2.account.controller;
 import com.example.loginlivesession2.account.dto.request.PostRequestDto;
 import com.example.loginlivesession2.account.dto.response.ResponseDto;
 import com.example.loginlivesession2.account.service.PostService;
+import com.example.loginlivesession2.security.user.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,9 +18,38 @@ public class PostController {
 
     private final PostService postService;
 
-    @PostMapping("/api/post")
-    public ResponseDto<?> createPost(@RequestBody PostRequestDto requestDto, HttpServletRequest request) {
-        return postService.createPost(requestDto, request);
+    @PostMapping(value = "/api/post")
+    public ResponseDto<?> createPost(@RequestBody @Valid PostRequestDto requestDto,
+                                     @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        Long memberId = userDetails.getMember().getMemberId();
+        return postService.createPost(requestDto, memberId);
 
     }
+
+    @PutMapping(value = "/api/post/{id}")
+    public ResponseDto<?> updatePost(@RequestBody PostRequestDto requestDto,
+                                     @AuthenticationPrincipal UserDetailsImpl userDetails,
+                                     @PathVariable Long id
+    ) {
+        Long memberId = userDetails.getMember().getMemberId();
+        return postService.updatePost(requestDto, memberId, id);
+    }
+
+    @DeleteMapping(value = "/api/post/{id}")
+    public ResponseDto<?> deletePost(@PathVariable Long id,
+                                     @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        Long memberId = userDetails.getMember().getMemberId();
+        return postService.deleteOne(id, memberId);
+    }
+
+    @GetMapping(value = "/api/show")
+    public ResponseDto<?> getPost() {
+        return postService.getPost();
+    }
+
+    @GetMapping(value = "/api/show/{id}")
+    public ResponseDto<?> getOnePost(@PathVariable Long id) {
+        return postService.getOnePost(id);
+    }
+
 }

@@ -12,7 +12,7 @@ import javax.validation.constraints.Pattern;
 public class MemberReqDto {
 
     @NotBlank
-    @Pattern(regexp = "[a-z\\d]*${4,12}", message = "id오류")
+    @Pattern(regexp = "^(?=.*[A-Za-z.*\\d])[A-Za-z\\d]{4,12}$", message = "id오류")
     private String nickname;
     @NotBlank
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d~!@#$%^&*()+|=]{8,16}$", message = "비밀번호 오류")

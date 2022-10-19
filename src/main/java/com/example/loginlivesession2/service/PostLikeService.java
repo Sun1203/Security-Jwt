@@ -22,7 +22,7 @@ public class PostLikeService {
     private final PostLikeRepository postLikeRepository;
 
     @Transactional
-    public GlobalResDto<?> plusLike(UserDetailsImpl userDetails, Long postid) {
+    public GlobalResDto<PostLikeResDto> plusLike(UserDetailsImpl userDetails, Long postid) {
         Post post = isPresentPost(postid);
         if (post == null) {
             return GlobalResDto.fail("POST_NOT_FOUND", "게시물이 존재하지 않습니다");
@@ -40,7 +40,7 @@ public class PostLikeService {
     }
 
     @Transactional
-    public GlobalResDto<?> delLike(UserDetailsImpl userDetails, Long postid) {
+    public GlobalResDto<PostLikeResDto> delLike(UserDetailsImpl userDetails, Long postid) {
         Post post = isPresentPost(postid);
         if (post == null) {
             return GlobalResDto.fail("POST_NOT_FOUND", "게시물이 존재하지 않습니다");

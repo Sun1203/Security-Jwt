@@ -26,7 +26,7 @@ public class MypageService {
     private final CommentRepository commentRepository;
     private final PostLikeRepository postLikeRepository;
 
-    public GlobalResDto<?> getMypagePost(UserDetailsImpl userDetails) {
+    public GlobalResDto<List<PostAllResDto>> getMypagePost(UserDetailsImpl userDetails) {
         List<Post> posts = isPresentPost(userDetails.getAccount());
         List<PostAllResDto> postAllResDtos = new ArrayList<>();
 
@@ -38,7 +38,7 @@ public class MypageService {
         return GlobalResDto.success(postAllResDtos);
     }
 
-    public GlobalResDto<?> getMypageComment(UserDetailsImpl userDetails) {
+    public GlobalResDto<List<CommentResDto>> getMypageComment(UserDetailsImpl userDetails) {
         List<Comment> comments = isPresentComment(userDetails.getAccount());
         List<CommentResDto> commentResDtos = new ArrayList<>();
 
@@ -50,7 +50,7 @@ public class MypageService {
         return GlobalResDto.success(commentResDtos);
     }
 
-    public GlobalResDto<?> getMypagePostLike(UserDetailsImpl userDetails) {
+    public GlobalResDto<List<PostAllResDto>> getMypagePostLike(UserDetailsImpl userDetails) {
         List<PostLIke> postLIkes = isPresentPostLike(userDetails.getAccount());
 
         List<Post> posts = new ArrayList<>();

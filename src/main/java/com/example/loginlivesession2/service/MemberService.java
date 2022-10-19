@@ -28,7 +28,7 @@ public class MemberService {
     private final RefreshTokenRepository refreshTokenRepository;
 
     @Transactional
-    public GlobalResDto<?> signup(MemberReqDto memberReqDto) {
+    public GlobalResDto<MemberResDto> signup(MemberReqDto memberReqDto) {
         // email 중복 검사
         if (null != isPresentMember(memberReqDto.getNickname())) {
             return GlobalResDto.fail("DUPLICATED_NICKNAME", "이미 사용중인 닉네임입니다.");
@@ -46,7 +46,7 @@ public class MemberService {
     }
 
     @Transactional
-    public GlobalResDto<?> login(LoginReqDto loginReqDto, HttpServletResponse response) {
+    public GlobalResDto<MemberResDto> login(LoginReqDto loginReqDto, HttpServletResponse response) {
 
         Member member = isPresentMember(loginReqDto.getNickname());
         if (member == null) {

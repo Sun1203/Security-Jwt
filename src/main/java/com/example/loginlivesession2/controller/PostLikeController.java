@@ -1,6 +1,7 @@
 package com.example.loginlivesession2.controller;
 
 import com.example.loginlivesession2.dto.globalDto.GlobalResDto;
+import com.example.loginlivesession2.dto.response.PostLikeResDto;
 import com.example.loginlivesession2.security.user.UserDetailsImpl;
 import com.example.loginlivesession2.service.PostLikeService;
 import lombok.RequiredArgsConstructor;
@@ -14,12 +15,12 @@ public class PostLikeController {
     private final PostLikeService postLikeService;
 
     @PostMapping("/{postid}")
-    public GlobalResDto<?> plusLike(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable Long postid) {
+    public GlobalResDto<PostLikeResDto> plusLike(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable Long postid) {
         return postLikeService.plusLike(userDetails, postid);
     }
 
     @DeleteMapping("/{postid}")
-    public GlobalResDto<?> delLike(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable Long postid){
+    public GlobalResDto<PostLikeResDto> delLike(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable Long postid){
         return postLikeService.delLike(userDetails,postid);
     }
 }

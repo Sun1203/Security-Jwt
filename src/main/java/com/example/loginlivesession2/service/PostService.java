@@ -32,7 +32,7 @@ public class PostService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public GlobalResDto<?> generatePost(Long memberid, PostReqDto postReqDto) {
+    public GlobalResDto<PostResDto> generatePost(Long memberid, PostReqDto postReqDto) {
         Member member = isPresentMember(memberid);
         if(member==null){
             return GlobalResDto.fail("MEMBER_NOT_FOUND","사용자가 존재하지 않습니다.");
@@ -44,7 +44,7 @@ public class PostService {
     }
 
     @Transactional
-    public GlobalResDto<?> updatePost(UserDetailsImpl userDetails, PostReqDto postReqDto, Long postid) {
+    public GlobalResDto<PostResDto> updatePost(UserDetailsImpl userDetails, PostReqDto postReqDto, Long postid) {
         Post post = isPresentPost(postid);
         if (post == null) {
             return GlobalResDto.fail("POST_NOT_FOUND", "게시물이 존재하지 않습니다");
@@ -59,7 +59,7 @@ public class PostService {
         return GlobalResDto.success(postResDto);
     }
 
-    public GlobalResDto<?> getAllPost() {
+    public GlobalResDto<List<PostAllResDto>> getAllPost() {
         List<Post> posts = postRepository.findAll();
         List<PostAllResDto> postAllResDtos = new ArrayList<>();
         for (Post post : posts) {
@@ -69,7 +69,7 @@ public class PostService {
         return GlobalResDto.success(postAllResDtos);
     }
 
-    public GlobalResDto<?> getPost(Long postid) {
+    public GlobalResDto<PostResDto> getPost(Long postid) {
         Post post = isPresentPost(postid);
         if (post == null) {
             return GlobalResDto.fail("POST_NOT_FOUND", "게시물이 존재하지 않습니다");
@@ -81,7 +81,7 @@ public class PostService {
     }
 
     @Transactional
-    public GlobalResDto<?> delPost(Long postid, UserDetailsImpl userDetails) {
+    public GlobalResDto<delDto> delPost(Long postid, UserDetailsImpl userDetails) {
         Post post = isPresentPost(postid);
         if (post == null) {
             return GlobalResDto.fail("POST_NOT_FOUND", "게시물이 존재하지 않습니다");

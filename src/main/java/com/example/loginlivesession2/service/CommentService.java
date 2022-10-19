@@ -23,7 +23,7 @@ public class CommentService {
     private final PostRepository postRepository;
 
     @Transactional
-    public GlobalResDto<?> generateComment(UserDetailsImpl userDetails, Long postid, CommentReqDto commentReqDto) {
+    public GlobalResDto<CommentResDto> generateComment(UserDetailsImpl userDetails, Long postid, CommentReqDto commentReqDto) {
         Post post = isPresentPost(postid);
         if (post == null) {
             return GlobalResDto.fail("POST_NOT_FOUND", "게시물이 존재하지 않습니다");
@@ -35,7 +35,7 @@ public class CommentService {
     }
 
     @Transactional
-    public GlobalResDto<?> updateComment(UserDetailsImpl userDetails, Long postid, Long commentid, CommentReqDto commentReqDto) {
+    public GlobalResDto<CommentResDto> updateComment(UserDetailsImpl userDetails, Long postid, Long commentid, CommentReqDto commentReqDto) {
         Post post = isPresentPost(postid);
         if (post == null) {
             return GlobalResDto.fail("POST_NOT_FOUND", "게시물이 존재하지 않습니다");
@@ -53,7 +53,7 @@ public class CommentService {
     }
 
     @Transactional
-    public GlobalResDto<?> delComment(UserDetailsImpl userDetails, Long postid, Long commentid) {
+    public GlobalResDto<delDto> delComment(UserDetailsImpl userDetails, Long postid, Long commentid) {
         Post post = isPresentPost(postid);
         if (post == null) {
             return GlobalResDto.fail("POST_NOT_FOUND", "게시물이 존재하지 않습니다");
@@ -63,7 +63,7 @@ public class CommentService {
             return GlobalResDto.fail("COMMENT_NOT_FOUND", "댓글이 존재하지 않습니다");
         }
         if (!userDetails.getAccount().getMemberid().equals(comment.getMember().getMemberid())) {
-            return GlobalResDto.fail("NO_PERMISSION", "게시물은 자신이 작성한 게시물만 수정할 수 있습니다.");
+            return GlobalResDto.fail("NO_PERMISSION", "게시물은 자신이 작성한 게시물만 삭제할 수 있습니다.");
         }
 
         commentRepository.delete(comment);

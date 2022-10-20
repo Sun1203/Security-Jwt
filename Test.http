@@ -34,7 +34,7 @@ Content-Type: application/json
 ###
 POST http://localhost:8080/api/post
 Content-Type: application/json
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjA1Nzg0MSwiaWF0IjoxNjY2MDU2MDQxfQ.ssWBeNbbOdszwzGCEHKHieaLIkHpuCa-10bdHEZouE8
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjE5NzE4OSwiaWF0IjoxNjY2MTk1Mzg5fQ.XhDpxVGjAgOhp9_8DsIx5KK_mvJFFHAmdgI49v7pPoY
 
 
 {
@@ -45,7 +45,7 @@ Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjA1Nzg0M
 ### ㄱㅔ시글 작성
 POST http://localhost:8080/api/post
 Content-Type: application/json
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjA2MTM4NCwiaWF0IjoxNjY2MDU5NTg0fQ.gEYepLHl3erNZ_Y153Haula_8pI2C3Bb9rKbTgNpgsY
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjA5NjIzNSwiaWF0IjoxNjY2MDk0NDM1fQ.LkymMENd1Vl1Xw_njUf0e9BqMpJD20_p0Z1KGxPBK-M
 
 
 {
@@ -56,18 +56,17 @@ Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjA2MTM4N
 ###
 PUT http://localhost:8080/api/post/1
 Content-Type: application/json
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMzQiLCJleHAiOjE2NjU5Mjg0MDksImlhdCI6MTY2NTkyNjYwOX0.8qKoV2hZVOgxA66vfd243-2ckrnRzgxomJf7B6xgRV0
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjE5NzE4OSwiaWF0IjoxNjY2MTk1Mzg5fQ.XhDpxVGjAgOhp9_8DsIx5KK_mvJFFHAmdgI49v7pPoY
 
 
 {
-  "title": "수정",
-  "contents": "내용수정!"
+  "contents": "내용수정!111"
 }
 
 ###
-DELETE http://localhost:8080/api/post/2
+DELETE http://localhost:8080/api/post/1
 Content-Type: application/json
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMzQiLCJleHAiOjE2NjU5MjY0ODUsImlhdCI6MTY2NTkyNDY4NX0.vjGFpSr-_HF7trmA6un90G8C4LvDuVsM4S3T-v5dbuc
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjE3NTg0OCwiaWF0IjoxNjY2MTc0MDQ4fQ.yr76KEghZH9j7zcbgIWm4kl0xjYZbtt3_D_NeW3WZCI
 
 ###
 GET http://localhost:8080/api/show
@@ -78,36 +77,36 @@ GET http://localhost:8080/api/show/1
 Content-Type: application/json
 
 ###
-POST http://localhost:8080/api/post/3/comment
+POST http://localhost:8080/api/post/1/comment
 Content-Type: application/json
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjA1Nzg0MSwiaWF0IjoxNjY2MDU2MDQxfQ.ssWBeNbbOdszwzGCEHKHieaLIkHpuCa-10bdHEZouE8
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjE5NzE4OSwiaWF0IjoxNjY2MTk1Mzg5fQ.XhDpxVGjAgOhp9_8DsIx5KK_mvJFFHAmdgI49v7pPoY
 
 {
   "comment": "댓글!234"
 }
 
 ###
-POST http://localhost:8080/api/like/3
+POST http://localhost:8080/api/like/1
 Content-Type: application/json
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMzQiLCJleHAiOjE2NjYwMjM5ODcsImlhdCI6MTY2NjAyMjE4N30.xnMx9Tz7nLmzynfidlQ31lQtsoTjniXMGkDyZMRDGWs
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjE4NDc4NiwiaWF0IjoxNjY2MTgyOTg2fQ.-o-pT_U3rEwdxOiVJKDDiLzp_Oxhiu5FHTBg8XuainE
 
 
 ###
-DELETE http://localhost:8080/api/like/2
+DELETE http://localhost:8080/api/like/1
 Content-Type: application/json
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMzQiLCJleHAiOjE2NjYwMjI4MTksImlhdCI6MTY2NjAyMTAxOX0.C7QE1418qOOjNVpqxM17ui0mTUXqB8ZvVPFJy0tecvE
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjE4NDc4NiwiaWF0IjoxNjY2MTgyOTg2fQ.-o-pT_U3rEwdxOiVJKDDiLzp_Oxhiu5FHTBg8XuainE
 
 ###
 GET http://localhost:8080/api/mypage/like
 Content-Type: application/json
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMzQiLCJleHAiOjE2NjYwMjM5ODcsImlhdCI6MTY2NjAyMjE4N30.xnMx9Tz7nLmzynfidlQ31lQtsoTjniXMGkDyZMRDGWs
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjA5NjIzNSwiaWF0IjoxNjY2MDk0NDM1fQ.LkymMENd1Vl1Xw_njUf0e9BqMpJD20_p0Z1KGxPBK-M
 
 ###
 GET http://localhost:8080/api/mypage/post
 Content-Type: application/json
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjA1NjU3NSwiaWF0IjoxNjY2MDU0Nzc1fQ.4LpbDJijaWWtDsAGZbHrtwRJQlD2jzRDlt_qMbee698
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjE3MDQ4MSwiaWF0IjoxNjY2MTY4NjgxfQ.ZwkXOXmKdT9Tu6KTwjtuEFz-1DUWcpaIIEF_tDsT7Cw
 
 ###
 GET http://localhost:8080/api/mypage/comment
 Content-Type: application/json
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjA1Nzg0MSwiaWF0IjoxNjY2MDU2MDQxfQ.ssWBeNbbOdszwzGCEHKHieaLIkHpuCa-10bdHEZouE8
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyMyIsImV4cCI6MTY2NjE3MjUyMywiaWF0IjoxNjY2MTcwNzIzfQ.chZIBM14Vk9lKQ8l89fzEQbm-l9bfPjiu2vv9yd4ZP4

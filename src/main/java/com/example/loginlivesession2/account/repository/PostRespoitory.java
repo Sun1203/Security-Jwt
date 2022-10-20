@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PostRespoitory extends JpaRepository<Post, Long> {
-    Optional<Post> findByMember_Nickname(String nickname);
     List<Post> findByMember(Member member);
 
 

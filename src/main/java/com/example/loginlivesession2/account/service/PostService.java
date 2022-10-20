@@ -64,10 +64,12 @@ public class PostService {
             return ResponseDto.fail("Not matches ID", "해당 게시글 작성자만 수정할 수 있습니다");
 
         List<PostRequestDto> list = new ArrayList<>();
+
         for (PostRequestDto request : list) {
             if (request.getTitle().equals(null)) request.setTitle(post.get().getTitle());
             if (request.getContents().equals(null)) request.setContents(post.get().getContents());
         }
+
 
         List<Comment> commentList = commentRepository.findByPost(post.get());
         List<CommentResponseDto> commentResponseDtoList = new ArrayList<>();

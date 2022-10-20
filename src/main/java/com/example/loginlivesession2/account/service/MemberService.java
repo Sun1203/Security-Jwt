@@ -15,6 +15,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
@@ -29,7 +31,8 @@ public class MemberService {
 
     @Transactional
     public ResponseDto<?> signup(MemberReqDto memberReqDto) {
-        // email 중복 검사
+
+        // nickname 중복 검사
         if(memberRepository.findByNickname(memberReqDto.getNickname()).isPresent()){
             return ResponseDto.fail("OVERLAP_MEMBER", "중복된 사용자가 존재합니다.");
         }
@@ -47,6 +50,7 @@ public class MemberService {
         MemberResponseDto memberResponseDto = new MemberResponseDto(member.getNickname());
 
         return ResponseDto.success(memberResponseDto);
+
     }
 
     @Transactional

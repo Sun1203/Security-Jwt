@@ -31,7 +31,7 @@ public class Post extends Timestamped{
     @JoinColumn(name = "memberId", nullable = false)
     private Member member;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "post", orphanRemoval = true)
     private List<Comment> comment;
 
     public Post(PostRequestDto postRequestDto, Member member) {

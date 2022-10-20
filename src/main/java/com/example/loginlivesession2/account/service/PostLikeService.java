@@ -41,7 +41,7 @@ public class PostLikeService {
         return ResponseDto.success("좋아요 성공");
     }
 
-    @Transactional
+
     public ResponseDto<?> deletePostLike(Long postId, Long memberId) {
         Post post = isPresentPost(postId);
         if (post == null) return ResponseDto.fail("FOUND_NOT_POST", "게시글을 찾을 수 없습니다.");
@@ -50,6 +50,7 @@ public class PostLikeService {
 
         if (postLikeRepository.deleteByMemberAndPost(member, post) == 0)
             return ResponseDto.fail("ALREADY_CANCEL_LIKE", "이미 좋아요를 취소 하셨습니다.");
+
         return ResponseDto.success("좋아요 삭제 완료");
 
 

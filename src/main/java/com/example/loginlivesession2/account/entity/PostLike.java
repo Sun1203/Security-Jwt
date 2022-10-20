@@ -18,10 +18,10 @@ public class PostLike {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postLikeId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Post post;
 
     public PostLike(Member member, Post post){

@@ -1,0 +1,13 @@
+{
+  "success": "success",
+  "data": {
+    "creatAt": "2022-10-20T02:20:13.249409",
+    "title": "수정",
+    "nickname": "jasun12",
+    "postid": 4,
+    "like": 0,
+    "content": "내용수정222",
+    "comments": []
+  },
+  "statecode": 200
+}

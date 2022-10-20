@@ -1,0 +1,16 @@
+{
+  "success": "success",
+  "data": {
+    "createAt": "2022-10-20T02:20:38.047005",
+    "modifyAt": "2022-10-20T02:20:38.047005",
+    "id": 4,
+    "comment": "댓글!234",
+    "account": {
+      "createAt": "2022-10-20T02:09:28.110114",
+      "modifyAt": "2022-10-20T02:09:28.110114",
+      "id": 1,
+      "nickname": "jasun12"
+    }
+  },
+  "statecode": 200
+}

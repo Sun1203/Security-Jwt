@@ -1,0 +1,12 @@
+{
+  "success": "success",
+  "data": {
+    "creatAt": "2022-10-20T02:20:13.2494094",
+    "nickname": "jasun12",
+    "postid": 4,
+    "like": 0,
+    "content": "contents1",
+    "comments": null
+  },
+  "statecode": 200
+}

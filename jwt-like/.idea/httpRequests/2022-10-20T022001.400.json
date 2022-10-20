@@ -1,0 +1,5 @@
+{
+  "success": "fail",
+  "data": "찾는 post가 존재하지 않습니다.",
+  "statecode": 400
+}

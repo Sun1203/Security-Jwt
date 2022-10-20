@@ -4,14 +4,24 @@ spring :
       enabled: true
 
   datasource:
-    url : jdbc:h2:mem:db
-    password:
-    username: sa
+    url: jdbc:mysql://springboot-database1.co1d2mlhpaa6.ap-northeast-2.rds.amazonaws.com:3306/myselectshop
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: admin
+    password: 5509kong
 
   jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
+        show_sql: true
+    database: mysql
+
+logging:
+  level:
+    com.tutorial: debug
 
 jwt:
   secret :

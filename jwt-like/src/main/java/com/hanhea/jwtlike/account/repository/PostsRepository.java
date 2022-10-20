@@ -10,6 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface PostsRepository extends JpaRepository<Posts, Long> {
-    Optional<Posts> findByIdAndAccount(Long id, Account account);
+    Optional<Posts> findByIdAndAccount_Nickname(Long id, String nickname);
     List<Posts> findAll();
 }

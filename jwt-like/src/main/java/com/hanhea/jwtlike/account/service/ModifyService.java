@@ -9,7 +9,7 @@ import com.hanhea.jwtlike.account.entity.Comments;
 import com.hanhea.jwtlike.account.entity.PostLikes;
 import com.hanhea.jwtlike.account.entity.Posts;
 import com.hanhea.jwtlike.account.repository.AccountRepository;
-import com.hanhea.jwtlike.account.repository.CommnetsRepository;
+import com.hanhea.jwtlike.account.repository.CommentsRepository;
 import com.hanhea.jwtlike.account.repository.PostLikesRepository;
 import com.hanhea.jwtlike.account.repository.PostsRepository;
 import com.hanhea.jwtlike.jwt.jwt_utils.JWTUtil;
@@ -26,7 +26,7 @@ public class ModifyService {
     private final PostsRepository postsRepository;
     private final PostLikesRepository postLikesRepository;
     private final AccountRepository accountRepository;
-    private final CommnetsRepository commnetsRepository;
+    private final CommentsRepository commentsRepository;
     private final JWTUtil jwtUtil;
 
     @Transactional
@@ -38,7 +38,6 @@ public class ModifyService {
                     );
             Posts post = new Posts(requestDto, account);
             postsRepository.save(post);
-            System.out.println(post.getTitle());
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(new CommonResponseDto("success",
@@ -58,10 +57,7 @@ public class ModifyService {
                                    Long postid) {
         try {
             String nickname = jwtUtil.getNicknameFromToken(token);
-            Account account = accountRepository.findByNickname(nickname)
-                    .orElseThrow(() -> new RuntimeException("유저를 찾을수 없습니다.")
-                    );
-            Posts post = postsRepository.findByIdAndAccount(postid, account).orElseThrow(
+            Posts post = postsRepository.findByIdAndAccount_Nickname(postid, nickname).orElseThrow(
                     () -> new RuntimeException("해당 post를 수정할 권한이 없습니다.")
             );
             post.setTitle(requestDto.getTitle());
@@ -84,10 +80,7 @@ public class ModifyService {
     public ResponseEntity delpost(String token, Long postid) {
         try {
             String nickname = jwtUtil.getNicknameFromToken(token);
-            Account account = accountRepository.findByNickname(nickname)
-                    .orElseThrow(() -> new RuntimeException("유저를 찾을수 없습니다.")
-                    );
-            Posts post = postsRepository.findByIdAndAccount(postid, account).orElseThrow(
+            Posts post = postsRepository.findByIdAndAccount_Nickname(postid, nickname).orElseThrow(
                     () -> new RuntimeException("해당 post를 삭제할 권한이 없습니다.")
             );
             postsRepository.delete(post);
@@ -96,7 +89,6 @@ public class ModifyService {
                     .body(new CommonResponseDto("success",
                             new PostsresponseDto(post),
                             200));
-
         } catch (RuntimeException ex) {
             return ResponseEntity
                     .status(HttpStatus.OK)
@@ -115,18 +107,24 @@ public class ModifyService {
                     () -> new RuntimeException("사용자가 없어요")
             );
             Posts post = postsRepository.findById(postid).orElseThrow(
-                    () -> new RuntimeException("해당 포스터가 없어요"));
-            Comments comments = new Comments(requestDto,account, post);
-            commnetsRepository.save(comments);
+                    () -> new RuntimeException("해당 포스터가 없어요")
+            );
+            Comments comment = new Comments(requestDto, account, post);
+            //===============================
+//            post.getComments().add(comment);
+//            postsRepository.save(post);
+            //===============================
+            commentsRepository.save(comment);
+            CommonResponseDto commonResponseDto = new CommonResponseDto("success", comment, 200);
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(new CommonResponseDto("success",
-                            comments, 200));
+                    .body(commonResponseDto);
         }catch (RuntimeException ex){
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(new CommonResponseDto("fail",
-                            ex.getMessage(), 400));
+                            ex.getMessage(),
+                            400));
         }
     }
 
@@ -134,14 +132,14 @@ public class ModifyService {
     public ResponseEntity modicomment(String token, Long postid, Long commentid, CommentRequestDto requestDto) {
         try {
             String nickname = jwtUtil.getNicknameFromToken(token);
-            Account account = accountRepository.findByNickname(nickname).orElseThrow(
-                    () -> new RuntimeException("사용자가 없어요")
+            Posts post = postsRepository.findById(postid).orElseThrow(
+                    () -> new RuntimeException("해당 포스터가 없어요")
             );
-            Comments comments = commnetsRepository.findByIdAndPostAndAccount(commentid, postid, account).orElseThrow(
-                    () -> new RuntimeException("권한에 해당하는 자료가 없어요")
+            Comments comments = commentsRepository.findByIdAndPostsAndAccount_Nickname(commentid, post, nickname).orElseThrow(
+                    () -> new RuntimeException("해당하는 댓글이 없어요")
             );
             comments.setComment(requestDto.getComment());
-            commnetsRepository.save(comments);
+            commentsRepository.save(comments);
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(new CommonResponseDto("success",
@@ -157,13 +155,13 @@ public class ModifyService {
     public ResponseEntity delcomment(String token, Long postid, Long commentid) {
         try {
             String nickname = jwtUtil.getNicknameFromToken(token);
-            Account account = accountRepository.findByNickname(nickname).orElseThrow(
-                    () -> new RuntimeException("사용자가 없어요")
+            Posts post = postsRepository.findById(postid).orElseThrow(
+                    () -> new RuntimeException("해당 포스터가 없어요")
             );
-            Comments comments = commnetsRepository.findByIdAndPostAndAccount(commentid, postid, account).orElseThrow(
+            Comments comments = commentsRepository.findByIdAndPostsAndAccount_Nickname(commentid, post, nickname).orElseThrow(
                     () -> new RuntimeException("권한에 해당하는 자료가 없어요")
             );
-            commnetsRepository.delete(comments);
+            commentsRepository.delete(comments);
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(new CommonResponseDto("success",
@@ -219,7 +217,7 @@ public class ModifyService {
                 throw new RuntimeException("이미 안좋아하시는 데요");
             }
             PostLikes likes = new PostLikes(account, posts);
-            postLikesRepository.delete(likes);
+            postLikesRepository.deleteByAccount_IdAndPost_id(likes.getAccount().getId(), likes.getPost().getId());
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(new CommonResponseDto("success",

@@ -1,10 +1,12 @@
 package com.hanhea.jwtlike.account.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hanhea.jwtlike.account.dto.Request.CommentRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.internal.util.stereotypes.Lazy;
 
 import javax.persistence.*;
 
@@ -22,16 +24,18 @@ public class Comments extends Timestamp{
     @Column(nullable = false)
     private String comment;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false, name = "member_id")
     private Account account;
 
-    @ManyToOne
-    private Posts post;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn
+    @JsonIgnore
+    private Posts posts;
 
     public Comments(CommentRequestDto commentRequestDto, Account account, Posts post){
         this.comment = commentRequestDto.getComment();
         this.account = account;
-        this.post = post;
+        this.posts = post;
     }
 }

@@ -31,11 +31,11 @@ public class Posts extends Timestamp{
     @JoinColumn(nullable = false, name = "member_id")
     private Account account;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "comment_id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="posts", orphanRemoval = true)
     private List<Comments> comments;
 
-    @Formula("(select count(1) from postlikes pl where pl.post_id = id)")
+    @Basic(fetch=FetchType.LAZY)//연산끝난후 계산
+    @Formula("(select count(1) from postlikes pl where pl.post_id = id)")//가상컬럼으로 동작한다
     private int like;
 
     public Posts(PostRequestDto postRequestDto, Account account){

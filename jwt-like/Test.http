@@ -1,66 +1,84 @@
 ###
-POST http://localhost:8080/addpost
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3b2FzZGYxIiwiZXhwIjoxNjY2MDUxNjUyLCJpYXQiOjE2NjYwNTEwNTJ9.n3dl8SkWQCSY_OY6OzAyOYJVWFtZmvVpdvt5Thn6PXU
+POST http://localhost:8080/member/signup
 Content-Type: application/json
 
 {
-  "title": "hello2",
-  "content": "gini"
+  "nickname": "jasun12",
+  "password": "Qlqjs134",
+  "passwordConfirm" : "Qlqjs134"
 }
-
-###
-PUT http://localhost:8080/post/1
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3b2FzZGYxIiwiZXhwIjoxNjY2MDUxNjUyLCJpYXQiOjE2NjYwNTEwNTJ9.n3dl8SkWQCSY_OY6OzAyOYJVWFtZmvVpdvt5Thn6PXU
-Content-Type: application/json
-
-{
-  "title": "수정본",
-  "content": "수정한내용"
-}
-
-###
-DELETE http://localhost:8080/post/1
-
-Accept: application/json
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3b2FzZGYxIiwiZXhwIjoxNjY2MDUxMDgzLCJpYXQiOjE2NjYwNTA0ODN9.NPcIBpUDgxhY6IAo6KfNtLpjSjKVK-cnR8eGcKNUNdU
-
-###
-GET http://localhost:8080/show/post
-
-###
-GET http://localhost:8080/show/1
-
-###
-GET http://localhost:8080/post/{postid}/comment
-Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3b2FzZGYxIiwiZXhwIjoxNjY2MDQyODQ0LCJpYXQiOjE2NjYwNDIyNDR9.rnT_Hr7r6csq6FXAFXF3dX6m7_Q5MCzW8gNlM61SZxU
-Content-Type: application/json
-
-###
-GET http://localhost:8080/show/post
-#Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3b2FzZGYxIiwiZXhwIjoxNjY2MDQyODQ0LCJpYXQiOjE2NjYwNDIyNDR9.rnT_Hr7r6csq6FXAFXF3dX6m7_Q5MCzW8gNlM61SZxU
-#Content-Type: application/json
-
-###
-GET http://localhost:8080/show/1
-#Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3b2FzZGYxIiwiZXhwIjoxNjY2MDQyODQ0LCJpYXQiOjE2NjYwNDIyNDR9.rnT_Hr7r6csq6FXAFXF3dX6m7_Q5MCzW8gNlM61SZxU
-#Content-Type: application/json
 
 ###
 POST http://localhost:8080/member/login
 Content-Type: application/json
 
 {
-  "nickname": "woasdf1",
-  "password": "baasdfasd1"
+  "nickname": "jasun12",
+  "password": "Qlqjs134"
 }
 
 ###
-POST http://localhost:8080/member/signup
+POST http://localhost:8080/addpost
 Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyIiwiZXhwIjoxNjY2MjAwNDQ0LCJpYXQiOjE2NjYxOTk4NDR9.CHtAEXmU7DXwH4Gwy1V-1tbzf6VLmOJeB4qWNahVDZE
 
 {
-  "nickname": "woasdf1",
-  "password": "baasdfasd1",
-  "passwordConfirm": "baasdfasd1"
+  "title" : "test1",
+  "content": "contents1"
 }
+
 ###
+PUT http://localhost:8080/post/4
+Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyIiwiZXhwIjoxNjY2MjAwNDQ0LCJpYXQiOjE2NjYxOTk4NDR9.CHtAEXmU7DXwH4Gwy1V-1tbzf6VLmOJeB4qWNahVDZE
+
+{
+  "title": "수정",
+  "content": "내용수정222"
+}
+
+###
+DELETE http://localhost:8080/post/4
+Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyIiwiZXhwIjoxNjY2MjAwNDQ0LCJpYXQiOjE2NjYxOTk4NDR9.CHtAEXmU7DXwH4Gwy1V-1tbzf6VLmOJeB4qWNahVDZE
+
+###
+GET http://localhost:8080/show/post
+Content-Type: application/json
+
+###
+GET http://localhost:8080/show/4
+Content-Type: application/json
+
+###
+POST http://localhost:8080/post/4/comment
+Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyIiwiZXhwIjoxNjY2MjAwNDQ0LCJpYXQiOjE2NjYxOTk4NDR9.CHtAEXmU7DXwH4Gwy1V-1tbzf6VLmOJeB4qWNahVDZE
+
+{
+  "comment": "댓글!234"
+}
+
+###
+PUT http://localhost:8080/post/4/4
+Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyIiwiZXhwIjoxNjY2MjAwNDQ0LCJpYXQiOjE2NjYxOTk4NDR9.CHtAEXmU7DXwH4Gwy1V-1tbzf6VLmOJeB4qWNahVDZE
+
+{
+  "comment": "댓글!5554"
+}
+
+###
+DELETE http://localhost:8080/post/4/4
+Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyIiwiZXhwIjoxNjY2MjAwNDQ0LCJpYXQiOjE2NjYxOTk4NDR9.CHtAEXmU7DXwH4Gwy1V-1tbzf6VLmOJeB4qWNahVDZE
+
+###
+POST http://localhost:8080/like/4
+Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyIiwiZXhwIjoxNjY2MjAwNDQ0LCJpYXQiOjE2NjYxOTk4NDR9.CHtAEXmU7DXwH4Gwy1V-1tbzf6VLmOJeB4qWNahVDZE
+
+###
+DELETE http://localhost:8080/like/4
+Content-Type: application/json
+Access_Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXN1bjEyIiwiZXhwIjoxNjY2MjAwNDQ0LCJpYXQiOjE2NjYxOTk4NDR9.CHtAEXmU7DXwH4Gwy1V-1tbzf6VLmOJeB4qWNahVDZE

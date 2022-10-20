@@ -26,9 +26,9 @@ public class JWTUtil {
 
     private final RedisTemplate<String, String> redisTemplate;
 
-    private static final Long ACCESS_TIME = 10*1000*60L; //3분
+    private static final Long ACCESS_TIME = 10*1000*60L; //10분
     public static final String ACCESS_TOKEN = "Access_Token";
-    private static final Long REFRESH_TIME = 20*1000*60L; //7분
+    private static final Long REFRESH_TIME = 20*1000*60L; //20분
 
     @Value("${jwt.secret}")
     private String secretKey;

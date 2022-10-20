@@ -27,10 +27,10 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         String accessToken = request.getHeader("Access_Token");
         if(accessToken != null) {
-            if (jwtUtil.tokenValidation(accessToken)) {//완전 정상, 만료기간이내
+            if (jwtUtil.tokenValidation(accessToken)) {//완전 정상, 만료기간지남
                 String nickname = jwtUtil.getNicknameFromToken(accessToken);//이름빼내기
                 if (jwtUtil.rftokenvalid(nickname)) {//refresh기간이 아직 남아 있다면
-                    accessToken = jwtUtil.createAllToken(nickname); //토큰 재생성 및 저장
+                    response.setHeader("Access_Token", jwtUtil.createAllToken(nickname));
                 }
                 setAuthentication(nickname);
             } else jwtExceptionHandler(response, "재로그인 하세요", HttpStatus.BAD_REQUEST);

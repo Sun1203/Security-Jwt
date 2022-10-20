@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface CommnetsRepository extends JpaRepository<Comments, Long> {
-    Optional<Comments> findByIdAndPostAndAccount(Long id, Long post, Account account);
+public interface CommentsRepository extends JpaRepository<Comments, Long> {
+    Optional<Comments> findByIdAndPostsAndAccount_Nickname(Long id, Posts post, String nickname);
 }

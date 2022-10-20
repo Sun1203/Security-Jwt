@@ -27,7 +27,6 @@ public class ShowService {
             responselist.add(new PostsresponseDto(post.getCreateAt(), post.getAccount().getNickname()
                     , post.getId(), post.getLike(), post.getContent()));
         }
-        System.out.println(responselist.size());
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(new CommonResponseDto("success", responselist, 200));

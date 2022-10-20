@@ -11,6 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity(name="postlikes")
 public class PostLikes{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="like_id")

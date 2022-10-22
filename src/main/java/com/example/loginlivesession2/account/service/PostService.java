@@ -5,11 +5,14 @@ import com.example.loginlivesession2.account.dto.response.*;
 import com.example.loginlivesession2.account.entity.Comment;
 import com.example.loginlivesession2.account.entity.Member;
 import com.example.loginlivesession2.account.entity.Post;
+import com.example.loginlivesession2.account.exception.CustomException;
+import com.example.loginlivesession2.account.exception.ErrorCode;
 import com.example.loginlivesession2.account.repository.CommentRepository;
 import com.example.loginlivesession2.account.repository.MemberRepository;
 import com.example.loginlivesession2.account.repository.PostLikeRepository;
 import com.example.loginlivesession2.account.repository.PostRespoitory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,24 +33,16 @@ public class PostService {
     @Transactional
     public ResponseDto<?> createPost(PostRequestDto requestDto, Long memberId) {
 
-        Member member = isPresentMember(memberId);
-        if (member == null) return ResponseDto.fail("INVALID_TOKEN", "토큰이 유효하지 않습니다.");
+
+        Member member = memberRepository.findById(memberId).orElseThrow(
+                () -> new CustomException(ErrorCode.NOT_FOUND_MEMBER)
+        );
 
         Post post = new Post(requestDto, member);
         postRespoitory.save(post);
-
         List<CommentResponseDto> list = new ArrayList<>();
 
-        PostResponseDto postResponseDto = new PostResponseDto(
-                                         post.getCreatedAt(),
-                                         post.getTitle(),
-                                         post.getContents(),
-                                         post.getMember().getNickname(),
-                                         post.getPostId(),
-                                         postLikeRepository.countByPost(post),
-                                         list
-                                        );
-
+        PostResponseDto postResponseDto = new PostResponseDto(post, list, postLikeRepository.countByPost(post));
         return ResponseDto.success(postResponseDto);
     }
 
@@ -87,16 +82,8 @@ public class PostService {
 
         post.get().update(requestDto);
 
+        PostResponseDto postResponseDto = new PostResponseDto(post.get(), commentResponseDtoList, postLikeRepository.countByPost(post.get()));
 
-        PostResponseDto postResponseDto = new PostResponseDto(
-                post.get().getCreatedAt(),
-                post.get().getTitle(),
-                post.get().getContents(),
-                post.get().getMember().getNickname(),
-                post.get().getPostId(),
-                postLikeRepository.countByPost(post.get()),
-                commentResponseDtoList
-        );
 
 
         return ResponseDto.success(postResponseDto);
@@ -156,16 +143,7 @@ public class PostService {
             commentResponseDtoList.add(commentResponseDto);
         }
 
-        PostResponseDto postResponseDto = new PostResponseDto(
-                post.get().getCreatedAt(),
-                post.get().getTitle(),
-                post.get().getContents(),
-                post.get().getMember().getNickname(),
-                post.get().getPostId(),
-                postLikeRepository.countByPost(post.get()),
-                commentResponseDtoList
-        );
-
+        PostResponseDto postResponseDto = new PostResponseDto(post.get(), commentResponseDtoList, postLikeRepository.countByPost(post.get()));
         return ResponseDto.success(postResponseDto);
     }
 

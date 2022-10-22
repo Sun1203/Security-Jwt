@@ -6,6 +6,8 @@ import com.example.loginlivesession2.account.service.MemberService;
 import com.example.loginlivesession2.global.dto.GlobalResDto;
 import com.example.loginlivesession2.jwt.util.JwtUtil;
 import com.example.loginlivesession2.security.user.UserDetailsImpl;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,8 +21,10 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class MemberController {
 
+
     private final JwtUtil jwtUtil;
     private final MemberService memberService;
+
 
     @PostMapping(value = "/member/signup")
     public ResponseDto<?> signup(@RequestBody @Valid MemberReqDto memberReqDto) {

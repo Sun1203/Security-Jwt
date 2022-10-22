@@ -10,8 +10,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Error {
-    private String field;
 
+    private String field;
     private String message;
 
 }

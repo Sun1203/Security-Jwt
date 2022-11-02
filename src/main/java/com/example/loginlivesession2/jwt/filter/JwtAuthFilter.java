@@ -23,17 +23,13 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     private final JwtUtil jwtUtil;
 
     @Override
+    // HTTP 요청이 오면 WAS(tomcat)가 HttpServletRequest, HttpServletResponse 객체를 만들어 줍니다.
+    // 만든 인자 값을 받아옵니다.
+    // 요청이 들어오면 diFilterInternal 이 딱 한번 실행된다.
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        // WebSecurityConfig 에서 보았던 UsernamePasswordAuthenticationFilter 보다 먼저 동작을 하게 됩니다.
 
-        // 1 . 요청이 들어오면 이곳에 무조건 한번은 들어오는가 ? yes
-        // 2 . 그러면 요청이 들어왔을때 Acess토큰이 만료되고 Refresh토큰값이 아직 살아있을떼
-//             Refresh토큰값으로 Acess토큰값을 다시 할당해주면 안될까 ?
-        // 3. 2번이 가능하다면 매번 인증이 필요한 요청을 받을때 마다 Acess토큰과 Refresh토큰값을 같이 받아야 하는가 ?
-        // 4. 그러면 프론트단에서는 cookie저장소에 Access 토큰값만 저장하고 Refresh토큰값은 어떻게 처리해야할까?
-        //    Refresh토큰을 cookie저장소에 저장하기엔 너무 위험하지 않을까?
-        // Refresh토큰을 cookie저장소에 저장하지 않는다면 어떻게 프론트 단에서 요청할때 보내줄 것인가..?
-
-
+        // Access / Refresh 헤더에서 토큰을 가져옴.
         String accessToken = jwtUtil.getHeaderToken(request, "Access");
         String refreshToken = jwtUtil.getHeaderToken(request, "Refresh");
 
@@ -43,8 +39,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             if(jwtUtil.tokenValidation(accessToken)){
                 setAuthentication(jwtUtil.getEmailFromToken(accessToken));
             }
-            // 어세스 토큰이 만료된 상황 | 리프레시 토큰 또한 존재하는 상황
-            else if (!jwtUtil.tokenValidation(accessToken) && refreshToken != null) {
+            // 어세스 토큰이 만료된 상황 && 리프레시 토큰 또한 존재하는 상황
+            else if (refreshToken != null) {
                 // 리프레시 토큰 검증 && 리프레시 토큰 DB에서  토큰 존재유무 확인
                 boolean isRefreshToken = jwtUtil.refreshTokenValidation(refreshToken);
                 // 리프레시 토큰이 유효하고 리프레시 토큰이 DB와 비교했을때 똑같다면
@@ -69,11 +65,16 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         filterChain.doFilter(request,response);
     }
 
+    // SecurityContext 에 Authentication 객체를 저장합니다.
     public void setAuthentication(String email) {
         Authentication authentication = jwtUtil.createAuthentication(email);
+        // security가 만들어주는 securityContextHolder 그 안에 authentication을 넣어줍니다.
+        // security가 securitycontextholder에서 인증 객체를 확인하는데
+        // jwtAuthfilter에서 authentication을 넣어주면 UsernamePasswordAuthenticationFilter 내부에서 인증이 된 것을 확인하고 추가적인 작업을 진행하지 않습니다.
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 
+    // Jwt 예외처리
     public void jwtExceptionHandler(HttpServletResponse response, String msg, HttpStatus status) {
         response.setStatus(status.value());
         response.setContentType("application/json");
@@ -84,5 +85,4 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             log.error(e.getMessage());
         }
     }
-
 }

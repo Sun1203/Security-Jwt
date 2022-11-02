@@ -46,6 +46,7 @@ public class JwtUtil {
     private Key key;
     private final SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
+    // bean으로 등록 되면서 딱 한번 실행이 됩니다.
     @PostConstruct
     public void init() {
         byte[] bytes = Base64.getDecoder().decode(secretKey);
@@ -124,5 +125,4 @@ public class JwtUtil {
     public void setHeaderRefreshToken(HttpServletResponse response, String refreshToken) {
         response.setHeader("Refresh_Token", refreshToken);
     }
-
 }

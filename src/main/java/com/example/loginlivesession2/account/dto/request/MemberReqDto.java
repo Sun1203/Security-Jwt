@@ -29,5 +29,4 @@ public class MemberReqDto {
     public void setEncodePwd(String encodePwd) {
         this.pw = encodePwd;
     }
-
 }
